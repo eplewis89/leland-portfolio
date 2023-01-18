@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "influ-ectious"
+version = "0.1.0"
+description = "Using CDC data trends for influenza are predicted."
+authors = ["Leland Fowler"]
+readme = "README.md"
+packages = [{include = "influ_ectious"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
