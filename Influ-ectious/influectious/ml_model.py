@@ -11,17 +11,10 @@ class model():
 
     def train_model(self):
         data = pd.get_dummies(self.train_data)
-        # Define the features and target variable
         x = data.drop([self.target_var], axis=1)
-
         y = data[self.target_var]
-
-        # Initialize the random forest model
         rf = RandomForestRegressor()
-
-        # Fit the model to the training data
         rf.fit(x, y)
-
         self.rf_model = rf
 
     def predict(self):
