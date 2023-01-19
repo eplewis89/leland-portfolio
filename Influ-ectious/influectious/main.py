@@ -1,6 +1,5 @@
-def main():
-    print("Hello Influenza!")
+from workflow import run
 
 
 if __name__ == "__main__":
-    main()
+    run('Influenza')
