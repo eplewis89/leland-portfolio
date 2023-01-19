@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 
 
-class model():
+class Model():
     def __init__(self, train_data: pd.DataFrame):
         self.train_data = train_data
         self.rf_model: DecisionTreeRegressor = None
