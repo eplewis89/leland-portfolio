@@ -33,16 +33,12 @@ class Disease:
             if analysis_name is "cdc_hospitalization_rates":
                 relative_path = "Data/CDC_FluView/Hospitalizations/" \
                                 "Hospitalization_Rates/Compiled_Data_For_DB.csv"
-
                 data_path = os.path.abspath(
                     os.path.join(os.path.dirname(__file__), "..", relative_path)
                 )
-
                 self.data[analysis_name].raw_data = pd.read_csv(data_path)
                 self.data[analysis_name].save_location = str(data_path).replace('.csv', "_CLEANED.csv")
-
         self.clean_up_data()
-
         for data_source in self.data:
             self.store_data(data_source)
 
@@ -63,6 +59,7 @@ class Disease:
     def analyze_data(self):
         for data_set in self.data:
             clean_data = self.data[data_set].clean_data
+
             # Use seaborn to create a boxplot of the weekly rate by catchment
             sns.boxplot(x='CATCHMENT', y='WEEKLY RATE', data=clean_data)
             plt.xlabel('Catchment')
@@ -79,6 +76,7 @@ class Disease:
 
             # Calculate summary statistics
             print(clean_data.describe())
+
             # Group data by season and calculate rudimentary statistics
             print("\n____MEAN____")
             print(clean_data.groupby(['AGE CATEGORY'])
