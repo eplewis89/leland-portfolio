@@ -14,7 +14,7 @@ def run(disease_model: str):
     rf_model = Model(train_data)
     rf_model.train_model()
     prediction = rf_model.predict()
-    print('hi')
+    print(f"Prediction: {prediction}")
 
 
 
