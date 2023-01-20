@@ -67,43 +67,43 @@ class Disease:
         for data_set in self.data:
             clean_data = self.data[data_set].clean_data
 
-            # Use seaborn to create a boxplot of the weekly rate by catchment
-            sns.boxplot(x='CATCHMENT', y='WEEKLY RATE', data=clean_data)
-            plt.xlabel('Catchment')
-            plt.ylabel('Weekly Rate')
-            plt.title('Weekly Rate by Catchment')
-            plt.show()
-
-            # Use seaborn to create a barplot of the cumulative rate by sex category
-            sns.barplot(x='SEX CATEGORY', y='CUMULATIVE RATE', data=clean_data)
-            plt.xlabel('Sex Category')
-            plt.ylabel('Cumulative Rate')
-            plt.title('Cumulative Rate by Sex Category')
-            plt.show()
-
-            # Calculate summary statistics
-            print(clean_data.describe())
-
-            # Group data by season and calculate rudimentary statistics
-            print("\n____MEAN____")
-            print(clean_data.groupby(['AGE CATEGORY'])
-                  .mean()['CUMULATIVE RATE'])
-            print("\n____MEDIAN____")
-            print(clean_data.groupby(['AGE CATEGORY'])['CUMULATIVE RATE']
-                  .median())
-            print("\n____MODE____")
-            print(clean_data.groupby(['AGE CATEGORY'])['CUMULATIVE RATE']
-                  .apply(lambda x: x.mode()))
-
-            # Create pivot table of weekly rate by age category and race category
-            pivot_table = clean_data.pivot_table(
-                values='WEEKLY RATE',
-                index='AGE CATEGORY',
-                columns='RACE CATEGORY')
-
-            # Use pandas to display the pivot table
-            pivot_table.plot(kind='bar', stacked=True)
-            plt.xlabel('Age Category')
-            plt.ylabel('Weekly Rate')
-            plt.title('Weekly Rate by Age Category and Race Category')
-            plt.show()
+            # # Use seaborn to create a boxplot of the weekly rate by catchment
+            # sns.boxplot(x='CATCHMENT', y='WEEKLY RATE', data=clean_data)
+            # plt.xlabel('Catchment')
+            # plt.ylabel('Weekly Rate')
+            # plt.title('Weekly Rate by Catchment')
+            # plt.show()
+            #
+            # # Use seaborn to create a barplot of the cumulative rate by sex category
+            # sns.barplot(x='SEX CATEGORY', y='CUMULATIVE RATE', data=clean_data)
+            # plt.xlabel('Sex Category')
+            # plt.ylabel('Cumulative Rate')
+            # plt.title('Cumulative Rate by Sex Category')
+            # plt.show()
+            #
+            # # Calculate summary statistics
+            # print(clean_data.describe())
+            #
+            # # Group data by season and calculate rudimentary statistics
+            # print("\n____MEAN____")
+            # print(clean_data.groupby(['AGE CATEGORY'])
+            #       .mean()['CUMULATIVE RATE'])
+            # print("\n____MEDIAN____")
+            # print(clean_data.groupby(['AGE CATEGORY'])['CUMULATIVE RATE']
+            #       .median())
+            # print("\n____MODE____")
+            # print(clean_data.groupby(['AGE CATEGORY'])['CUMULATIVE RATE']
+            #       .apply(lambda x: x.mode()))
+            #
+            # # Create pivot table of weekly rate by age category and race category
+            # pivot_table = clean_data.pivot_table(
+            #     values='WEEKLY RATE',
+            #     index='AGE CATEGORY',
+            #     columns='RACE CATEGORY')
+            #
+            # # Use pandas to display the pivot table
+            # pivot_table.plot(kind='bar', stacked=True)
+            # plt.xlabel('Age Category')
+            # plt.ylabel('Weekly Rate')
+            # plt.title('Weekly Rate by Age Category and Race Category')
+            # plt.show()

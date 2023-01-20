@@ -18,5 +18,5 @@ class Model():
         self.rf_model = rf
 
     def predict(self):
-        return self.rf_model.predict(self.test_data.drop([self.target_var], axis=1))
+        return self.rf_model.predict(self.train_data.drop([self.target_var], axis=1))
 
