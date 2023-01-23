@@ -1,22 +1,37 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.tree import DecisionTreeRegressor
+from statsmodels.tsa.arima.model import ARIMA
 
 
-class Model():
-    def __init__(self, train_data: pd.DataFrame):
-        self.train_data = train_data
-        self.rf_model: DecisionTreeRegressor = None
-        self.target_var: str = "WEEKLY RATE"
+class Model:
+    def __init__(self):
+        self.training_data = None
+        self.testing_data = None
+        self.model = None
+        self.model_fit = None
+        self.target_var: str = "CUMULATIVE RATE"
 
-    def train_model(self):
-        data = pd.get_dummies(self.train_data)
-        x = data.drop([self.target_var], axis=1)
-        y = data[self.target_var]
-        rf = RandomForestRegressor()
-        rf.fit(x, y)
-        self.rf_model = rf
+    def train_model(self, training_data: pd.DataFrame):
+        self.training_data = training_data
 
-    def predict(self):
-        return self.rf_model.predict(self.train_data.drop([self.target_var], axis=1))
+    def test_model(self, test_data: pd.DataFrame):
+        self.testing_data = test_data
 
+    def predict(self, steps):
+        prediction = self.model_fit.forecast(steps=steps)
+        return prediction[0]
+
+
+class ArimaModel(Model):
+    def __init__(self):
+        super().__init__()
+        self.model = 'ARIMA'
+
+    def train_model(self, training_data: pd.DataFrame):
+        super().train_model(training_data)
+        self.model = ARIMA(training_data[self.target_var], order=(1, 1, 1))
+        self.model_fit = self.model.fit()
+
+    def test_model(self, testing_data: pd.DataFrame):
+        super().train_model(testing_data)
+        pass
