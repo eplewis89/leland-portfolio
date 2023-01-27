@@ -11,12 +11,9 @@ def run(disease_model: str):
     disease.reconcile()
     disease.analyze_data()
 
-    # Split the data into training and test sets
-    train_size = int(len(disease.reconciled_data) * 0.75)
-    training_data, testing_data = disease.reconciled_data[:train_size], disease.reconciled_data[train_size:]
 
     # model = ArimaModel()
-    # model.train_model(training_data)
+    # model.train_model(disease.reconciled_data)
     # model.test_model(testing_data)
     # prediction = model.predict(12)
     # print(f"Prediction: {prediction}")
