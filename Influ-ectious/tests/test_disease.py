@@ -1,8 +1,5 @@
 import os
-
-import pandas as pd
 import pytest
-
 from influectious.disease import Disease
 
 

@@ -15,8 +15,8 @@ def run(disease_model: str):
     train_size = int(len(disease.reconciled_data) * 0.75)
     training_data, testing_data = disease.reconciled_data[:train_size], disease.reconciled_data[train_size:]
 
-    rf_model = ArimaModel()
-    rf_model.train_model(training_data)
-    rf_model.test_model(testing_data)
-    prediction = rf_model.predict(12)
-    print(f"Prediction: {prediction}")
+    # model = ArimaModel()
+    # model.train_model(training_data)
+    # model.test_model(testing_data)
+    # prediction = model.predict(12)
+    # print(f"Prediction: {prediction}")
