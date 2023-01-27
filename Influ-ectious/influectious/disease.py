@@ -69,6 +69,7 @@ class Disease:
                 = str(data_path).replace('.csv', "_CLEANED.csv")
 
     def ingest_api(self):
+        # Work in Progress
         for analysis_name in self.data:
             self.data[analysis_name].ingest_type = 'api'
             source = self.data[analysis_name].api_source
@@ -77,8 +78,12 @@ class Disease:
                 url = self.data["cdc_hospitalization_rates"].api_endpoint + '/D76'  ## or D140
                 param_name = self.data["cdc_hospitalization_rates"].api_parameter_name
                 xml_request = self.data["cdc_hospitalization_rates"].api_parameters
-
-                response = requests.get(url, data={param_name: xml_request, "accept_datause_restrictions": "true"})
+                head = {
+                    'API_KEY': 'Enter yours here',
+                    'API_SECRET': 'Enter yours here'
+                }
+                response = requests.get(url, headers=head,
+                                        data={param_name: xml_request, "accept_datause_restrictions": "true"})
 
                 if response and response.status == 200:
                     pd.read_json(response.json())
